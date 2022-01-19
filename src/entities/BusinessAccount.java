@@ -24,8 +24,8 @@ public class BusinessAccount extends Account {
 	public void loan(Double amount) {
 		
 		if(amount <= loanLimit) {
-			balance += amount - 10;
 			loanLimit -= amount;
+			balance += amount - 10.0;
 			System.out.println("Withdrawal of the Business account loan limit ($ 1000.0)\nand $ 10.0 fee discount:");
 			System.out.println("$ " + amount);
 			System.out.println("Your loan limit from now on is: \n$ " + loanLimit);
@@ -34,6 +34,12 @@ public class BusinessAccount extends Account {
 		else {
 			System.out.println("Enter a loan amount up to $ " + loanLimit );
 		}
+	}
+	
+	@Override
+	public void withdraw(Double amount) {
+		super.withdraw(amount);
+		balance -= 2.0;
 	}
 	
 	@Override
